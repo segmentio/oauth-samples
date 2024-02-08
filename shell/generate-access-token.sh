@@ -5,9 +5,9 @@
 #
 # It takes the following parameters:
 #
-# -a <oauth_app_id> : ID of the OAuth application created in the Segment UI. Please see https://segment.com/docs/connections/oauth/#create-an-oauth-app
-# -i <key_id> : Key Id of the public key registered with the OAuth application.
-# -k <private-key.pem> : Private key file secured locally and corresponds to the public key Id.
+# -a <oauth-app-id> : OAuth Application ID created in the Segment UI. Please see https://segment.com/docs/connections/oauth/#create-an-oauth-app
+# -i <public-key-id> : Public key ID registered with the OAuth application.
+# -k <private-key.pem> : Private key file secured locally and corresponds to the public key ID.
 # -h <host> : Host of the OAuth Authorization server. It should be either https://oauth2.segment.io or https://oauth2.eu1.segmentapis.com. Defaults to https://oauth2.segment.io
 # -s <scope> : Comma separated list of scopes. Defaults to tracking_api:write
 # -v <verbose> : Verbose mode. It should be either on or off.  Defaults to off
@@ -24,7 +24,7 @@
 scopes="tracking_api:write"
 host="https://oauth2.segment.io"
 verbose=0
-USAGE="Usage: $0 -a <oauth_app_id> -i <key_id> -k <private-key.pem> -h [https://oauth2.segment.io|https://oauth2.eu1.segmentapis.com] [-s <scope>] [-v on|off]"
+USAGE="Usage: $0 -a <oauth-app-id> -i <public-key-id> -k <private-key.pem> -h [https://oauth2.segment.io|https://oauth2.eu1.segmentapis.com] [-s <scope>] [-v on|off]"
 
 # Parse input arguments
 while getopts ":a:i:k:h:s:v:" option; do
