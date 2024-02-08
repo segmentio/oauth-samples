@@ -6,7 +6,7 @@ Shell script examples can be found in [shell](shell) directory. These scripts ar
 
 1. [Create Private/Public Key Pair](shell/create-keypair.sh)
 
-Creates a private and public key pair using openssl. The private key is used to sign the JWT and the public key is used to verify the JWT.
+Creates a private and public key pair using openssl. The private key is used to sign the JWT and the public key is used to verify the JWT. The private key is secured with the client and the public key is uploaded while creating Segment OAuth application. 
 
 ```shell
 ./create-keypair.sh -s sample
