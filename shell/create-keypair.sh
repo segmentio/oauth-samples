@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ############################################################################
 # This script is used to generate private and public key pairs.
@@ -33,12 +33,12 @@ PRIVATE_KEY_FILE="private${suffix}.pem"
 PUBLIC_KEY_FILE="public${suffix}.pem"
 
 # Validate if the private and public key files already exist
-if [ -f "$PRIVATE_KEY_FILE" ]; then
+if [[ -f "$PRIVATE_KEY_FILE" ]]; then
   echo "Private key file $PRIVATE_KEY_FILE already exists. Please remove it and try again or choose a different suffix."
   exit 1
 fi
 
-if [ -f "$PUBLIC_KEY_FILE" ]; then
+if [[ -f "$PUBLIC_KEY_FILE" ]]; then
   echo "Public key file $PUBLIC_KEY_FILE already exists. Please remove it and try again or choose a different suffix."
   exit 1
 fi

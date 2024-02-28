@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ############################################################################
 # This script is used to generate an access token for the Segment API.
@@ -36,7 +36,7 @@ while getopts ":a:i:k:h:s:v:" option; do
       key_id="$OPTARG"
       ;;
     k)
-      if [ -f "$OPTARG" ]; then
+      if [[ -f "$OPTARG" ]]; then
         key_file_name="$OPTARG"
       else
         echo "Cannot find fle $OPTARG"
@@ -45,7 +45,7 @@ while getopts ":a:i:k:h:s:v:" option; do
       ;;
     h)
       host="$OPTARG"
-      if [ "$host" != "https://oauth2.segment.io" ] && [ "$host" != "https://oauth2.eu1.segmentapis.com" ]; then
+      if [[ "$host" != "https://oauth2.segment.io" ]] && [[ "$host" != "https://oauth2.eu1.segmentapis.com" ]]; then
         echo "Invalid host $host"
         exit 1
       fi
@@ -72,7 +72,7 @@ while getopts ":a:i:k:h:s:v:" option; do
 done
 
 # Validate input arguments
-if [ -z "$key_file_name" ] || [ -z "$key_id" ]  || [ -z "$app_id" ] || [ -z "$scopes" ] || [ -z "$host" ]; then
+if [[ -z "$key_file_name" ]] || [[ -z "$key_id" ]]  || [[ -z "$app_id" ]] || [[ -z "$scopes" ]] || [[ -z "$host" ]]; then
     echo "${USAGE}"
     exit 1
 fi
@@ -97,7 +97,7 @@ HEADER_PAYLOAD="${HEADER}"."${PAYLOAD}"
 PEM=$( cat "$key_file_name" )
 SIGNATURE=$( openssl dgst -sha256 -sign <(echo -n "${PEM}") <(echo -n "${HEADER_PAYLOAD}") | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
 
-if [ -z "$SIGNATURE" ]; then
+if [[ -z "$SIGNATURE" ]]; then
   echo "Failed to sign the JWT"
   exit 1
 fi
@@ -105,7 +105,7 @@ fi
 # Combine Header, Payload and Signature to form the JWT
 JWT="${HEADER_PAYLOAD}"."${SIGNATURE}"
 
-if [ $verbose == 1 ]; then
+if [[ $verbose == 1 ]]; then
   echo "-------------------------------------------------------------------------------"
   echo "Header          : ${HEADER_RAW}"
   echo "Payload         : ${PAYLOAD_RAW}"

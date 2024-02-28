@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ############################################################################
 # This script is used to send a sample message to Tracking API using OAuth.
@@ -30,7 +30,7 @@ while getopts ":h:j:o:v:w:" option; do
   case $option in
     h)
       host="$OPTARG"
-      if [ "$host" != "https://api.segment.io" ] && [ "$host" != "https://events.eu1.segmentapis.com" ]; then
+      if [[ "$host" != "https://api.segment.io" ]] && [[ "$host" != "https://events.eu1.segmentapis.com" ]]; then
         echo "Invalid host $host"
         exit 1
       fi
@@ -71,12 +71,12 @@ while getopts ":h:j:o:v:w:" option; do
 done
 
 # Validate input arguments
-if [ $oauth -eq 1 ] && [ -z "$jwt" ]; then
+if [[ $oauth -eq 1 ]] && [[ -z "$jwt" ]]; then
     echo "access_jwt_token is required when OAuth is on"
     exit 1
 fi
 
-if [ -z "$write_key" ]; then
+if [[ -z "$write_key" ]]; then
     echo "${USAGE}"
     exit 1
 fi
@@ -85,11 +85,11 @@ fi
 MSG_ID=$(uuidgen)
 
 AUTH_HEADER="Authorization: Basic $(echo "$write_key:" | base64)"
-if [ $oauth -eq 1 ]; then
+if [[ $oauth -eq 1 ]]; then
   AUTH_HEADER="Authorization: Bearer $jwt"
 fi
 
-if [ ! -z "$verbose" ]; then
+if [[ ! -z "$verbose" ]]; then
   echo "Using Message Id :$MSG_ID"
   echo "Using Write Key   :$write_key"
   echo "Using Auth Header :$AUTH_HEADER"
