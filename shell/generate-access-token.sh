@@ -9,7 +9,7 @@
 # -i <public-key-id> : Public key ID registered with the OAuth application.
 # -k <private-key.pem> : Private key file secured locally and corresponds to the public key ID.
 # -h <host> : Host of the OAuth Authorization server. It should be either https://oauth2.segment.io or https://oauth2.eu1.segmentapis.com. Defaults to https://oauth2.segment.io
-# -s <scope> : Comma separated list of scopes. Defaults to tracking_api:write
+# -s <scope> : Space separated list of scopes. For example "tracking_api:write functions:write". Defaults to tracking_api:write
 # -v <verbose> : Verbose mode. It should be either on or off.  Defaults to off
 #
 # Example :
